@@ -1,38 +1,27 @@
+from PIL import Image
 from transformers import CLIPProcessor, CLIPModel
 
-# Load the pretrained CLIP model and its processor from Hugging Face
-# This version uses the ViT-L/14 architecture
+# Load the CLIP model and its processor
 model = CLIPModel.from_pretrained("openai/clip-vit-large-patch14")
 processor = CLIPProcessor.from_pretrained("openai/clip-vit-large-patch14")
 
-def get_image_features(image):
+def get_image_features(image_paths):
     """
-    Extract image features using the CLIP model.
-
     Args:
-        image (PIL.Image): An input image in PIL format.
-
+        image_paths (list[str]): List of file paths to images.
     Returns:
-        torch.Tensor: A tensor containing the image embedding from the CLIP model.
+        torch.Tensor: Feature vectors (CLIP embeddings) for the images.
     """
-    # Preprocess the image into a format the model can understand
-    inputs = processor(images=image, return_tensors="pt")
-    
-    # Compute and return the image features (embeddings)
+    images = [Image.open(p).convert("RGB") for p in image_paths]
+    inputs = processor(images=images, return_tensors="pt")
     return model.get_image_features(**inputs)
 
 def get_text_features(texts):
     """
-    Extract text features using the CLIP model.
-
     Args:
-        texts (List[str]): A list of input strings (sentences or phrases).
-
+        texts (list[str]): List of text strings.
     Returns:
-        torch.Tensor: A tensor containing the text embeddings from the CLIP model.
+        torch.Tensor: Feature vectors (CLIP embeddings) for the texts.
     """
-    # Preprocess the input texts (tokenization, padding, etc.)
     inputs = processor(text=texts, return_tensors="pt", padding=True)
-    
-    # Compute and return the text features (embeddings)
     return model.get_text_features(**inputs)
