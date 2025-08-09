@@ -12,7 +12,7 @@ def main():
     # Save results for further visualization or analysis
     df_metrics.to_csv("prompt_comparison_metrics.csv", index=True)
     print("\nMetrics saved to CSV file: prompt_comparison_metrics.csv")
-
+    plot_prompt_comparison_inline("prompt_comparison_metrics.csv")
 if __name__ == "__main__":
     main()
 
