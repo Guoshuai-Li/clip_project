@@ -9,17 +9,18 @@ It includes:
 - Visualization of retrieval performance across prompts
 
 ## Project Structure
+```bash
 clip_project/
-├── README.md # Project description & results
-├── requirements.txt # Python dependencies
-├── data_loader.py # Load and preprocess Flickr30k data
-├── clip_model.py # Load CLIP and extract embeddings
-├── retrieval.py # Similarity calculation & retrieval functions
-├── evaluation.py # Evaluation functions & sample output
-├── prompt_engineering.py # Prompt templates and evaluation
-├── main_basic.py # Entry point for basic retrieval
-├── main_prompt.py # Entry point for prompt engineering experiments
-
+├── README.md              # Project description & results
+├── requirements.txt       # Python dependencies
+├── data_loader.py         # Load and preprocess Flickr30k data
+├── clip_model.py          # Load CLIP and extract embeddings
+├── retrieval.py           # Similarity calculation & retrieval functions
+├── evaluation.py          # Evaluation functions & sample output
+├── prompt_engineering.py  # Prompt templates and evaluation
+├── main_basic.py          # Entry point for basic retrieval
+└── main_prompt.py         # Entry point for prompt engineering experiments
+```
 
 ---
 
